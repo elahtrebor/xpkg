@@ -10,7 +10,7 @@ To install and use:
 create a /lib directory in the root of your microcontroller
 
 copy xpkg.py into /lib
-
+<pre>
 use the pushvm environment to execute the xpkg package manageer.
 EXAMPLE:
 
@@ -65,3 +65,5 @@ PING 8.8.8.8 (8.8.8.8): 64 data bytes
 4 packets transmitted, 4 packets received
 push> 
 push> 
+</pre>
+
