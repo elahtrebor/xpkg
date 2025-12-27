@@ -4,8 +4,8 @@
 
   "uping": {
     "version": "0.1.0",
-    "file": "uping.py",
-    "install": "/lib/uping.py",
+    "file": "ping.py",
+    "install": "/lib/ping.py",
     "desc": "ICMP ping for MicroPython"
   },
 

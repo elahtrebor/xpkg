@@ -1,3 +1,4 @@
+# NOTE this code was derived from uping:
 # µPing (MicroPing) for MicroPython
 # copyright (c) 2018 Shawwwn <shawwwn1@gmail.com>
 # License: MIT
@@ -6,6 +7,14 @@
 # Author: Olav Morken
 # https://github.com/olavmrk/python-ping/blob/master/ping.py
 # @data: bytes
+
+
+import utime
+import uselect
+import uctypes
+import usocket
+import ustruct
+import urandom
 
 def checksum(data):
     if len(data) & 0x1: # Odd number of bytes
@@ -20,14 +29,15 @@ def checksum(data):
     cs = ~cs & 0xffff
     return cs
 
-def ping(host, count=4, timeout=5000, interval=10, quiet=False, size=64):
-    import utime
-    import uselect
-    import uctypes
-    import usocket
-    import ustruct
-    import urandom
-
+def main(argv):
+    host = argv[0]
+    count=4
+    timeout=5000
+    interval=10
+    quiet=False
+    size=64
+    
+    output = []
     # prepare packet
     assert size >= 16, "pkt size too small"
     pkt = b'Q'*size
@@ -43,8 +53,7 @@ def ping(host, count=4, timeout=5000, interval=10, quiet=False, size=64):
     h.type = 8 # ICMP_ECHO_REQUEST
     h.code = 0
     h.checksum = 0
-
-
+    h.id = urandom.randint(0, 65535)
     h.seq = 1
 
     # init socket
@@ -53,7 +62,7 @@ def ping(host, count=4, timeout=5000, interval=10, quiet=False, size=64):
     sock.settimeout(timeout/1000)
     addr = usocket.getaddrinfo(host, 1)[0][-1][0] # ip address
     sock.connect((addr, 1))
-    not quiet and print("PING %s (%s): %u data bytes" % (host, addr, len(pkt)))
+    not quiet and output.append("PING %s (%s): %u data bytes" % (host, addr, len(pkt)))
 
     seqs = list(range(1, count+1)) # [1,2,...,count]
     c = 1
@@ -88,7 +97,7 @@ def ping(host, count=4, timeout=5000, interval=10, quiet=False, size=64):
                     t_elasped = (utime.ticks_us()-h2.timestamp) / 1000
                     ttl = ustruct.unpack('!B', resp_mv[8:9])[0] # time-to-live
                     n_recv += 1
-                    not quiet and print("%u bytes from %s: icmp_seq=%u, ttl=%u, time=%f ms" % (len(resp), addr, seq, ttl, t_elasped))
+                    not quiet and output.append("%u bytes from %s: icmp_seq=%u, ttl=%u, time=%f ms" % (len(resp), addr, seq, ttl, t_elasped))
                     seqs.remove(seq)
                     if len(seqs) == 0:
                         finish = True
@@ -105,5 +114,7 @@ def ping(host, count=4, timeout=5000, interval=10, quiet=False, size=64):
     # close
     sock.close()
     ret = (n_trans, n_recv)
-    not quiet and print("%u packets transmitted, %u packets received" % (n_trans, n_recv))
-    return (n_trans, n_recv)
+    not quiet and output.append("%u packets transmitted, %u packets received" % (n_trans, n_recv))
+    print ("\n".join(output))
+
+
