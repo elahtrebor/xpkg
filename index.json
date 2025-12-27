@@ -14,6 +14,13 @@
     "file": "wget.py",
     "install": "/lib/wget.py",
     "desc": "Simple HTTP downloader"
+  },
+
+  "testpkg": {
+    "version": "0.1.0",
+    "file": "testpkg.py",
+    "install": "/lib/testpkg.py",
+    "desc": "test package for testing"
   }
 }
 
