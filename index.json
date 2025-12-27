@@ -2,7 +2,7 @@
   "repo": "elahtrebor/xpkg",
   "updated": "2025-01-02",
 
-  "uping": {
+  "ping": {
     "version": "0.1.0",
     "file": "ping.py",
     "install": "/lib/ping.py",
