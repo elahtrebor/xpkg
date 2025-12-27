@@ -1,6 +1,7 @@
 import urequests
 
-def exec(url):
- r = urequests.get(url)
+def main(argv):
+ r = urequests.get(argv[0])
  return r.content.decode('UTF-8')
+
 
