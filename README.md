@@ -11,17 +11,17 @@ create a /lib directory in the root of your microcontroller
 
 copy xpkg.py into /lib
 
-use the pushvm shell to execute the xpkg package manageer.
+use the pushvm environment to execute the xpkg package manageer.
 EXAMPLE:
 
->>> import pushvm2
->>> pushvm2.repl()
+>>> import pushvm
+>>> pushvm.repl()
 PUSH VM pushvm-complete-0.1
 Type 'help'. Use 'exit' to quit.
 Background: add '&' at end. Job control: jobs/kill/fg.
 Interactive mode: live (background jobs run while you type)
 push> xpkg list
-uping      0.1.0 - ICMP ping for MicroPython
+ping      0.1.0 - ICMP ping for MicroPython
 wget       0.1.0 - Simple HTTP downloader
 testpkg    0.1.0 - test package for testing
 
@@ -47,3 +47,21 @@ push> testpkg
 ok
 
 
+push> 
+push> xpkg install ping
+connecting to: https://raw.githubusercontent.com/elahtrebor/xpkg/main
+checking package list
+defining source: https://raw.githubusercontent.com/elahtrebor/xpkg/main/packages/ping.py
+defined destination: /lib/ping.py
+installed ping
+
+push> 
+push> ping 8.8.8.8
+PING 8.8.8.8 (8.8.8.8): 64 data bytes
+84 bytes from 8.8.8.8: icmp_seq=1, ttl=114, time=23.611000 ms
+84 bytes from 8.8.8.8: icmp_seq=2, ttl=114, time=20.973000 ms
+84 bytes from 8.8.8.8: icmp_seq=3, ttl=114, time=18.878000 ms
+84 bytes from 8.8.8.8: icmp_seq=4, ttl=114, time=17.496000 ms
+4 packets transmitted, 4 packets received
+push> 
+push> 
