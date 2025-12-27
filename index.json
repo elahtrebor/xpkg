@@ -1,0 +1,19 @@
+{
+  "repo": "elahtrebor/xpkg",
+  "updated": "2025-01-02",
+
+  "uping": {
+    "version": "0.1.0",
+    "file": "uping.py",
+    "install": "/lib/uping.py",
+    "desc": "ICMP ping for MicroPython"
+  },
+
+  "wget": {
+    "version": "0.1.0",
+    "file": "wget.py",
+    "install": "/lib/wget.py",
+    "desc": "Simple HTTP downloader"
+  }
+}
+
