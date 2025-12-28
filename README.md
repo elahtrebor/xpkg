@@ -1,5 +1,5 @@
 # xpkg
-A micropython package manager
+A micropython package manager for pushvm
 
 A repo will be maintained in the packages directory.
 
