@@ -10,6 +10,9 @@ To install and use:
 create a /lib directory in the root of your microcontroller
 
 copy xpkg.py into /lib
+or download and run this installer file:  
+[install_pushvm,py](https://github.com/elahtrebor/push/blob/main/pushvm/install_pushvm.py)
+
 <pre>
 use the pushvm environment to execute the xpkg package manageer.
 EXAMPLE:
