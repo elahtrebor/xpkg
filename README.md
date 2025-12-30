@@ -5,6 +5,8 @@ A repo will be maintained in the packages directory.
 
 the client xpkg.py must be installed on the Microcontroller device.
 
+note if the package manager fails you can always just download the files in the package directory to your local computer and then use Thonny or Webrepl to push the files into the /lib directory of your microcontroller to use them with the shell.
+
 To install and use:
 
 create a /lib directory in the root of your microcontroller
