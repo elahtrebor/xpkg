@@ -17,6 +17,13 @@ Or download and run this installer file:
 [install_pushvm,py](https://github.com/elahtrebor/push/blob/main/pushvm/install_pushvm.py)
 
 <pre>
+Current list of packages:
+testpkg    0.1.0 - test package for testing
+wget       0.1.0 - Simple HTTP downloader
+ping       0.1.0 - ICMP ping for MicroPython
+ntpsync    0.1.0 - Sync Time with an NTP server
+</pre>
+<pre>
 use the pushvm environment to execute the xpkg package manageer.
 EXAMPLE:
 

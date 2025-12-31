@@ -16,6 +16,13 @@
     "desc": "Simple HTTP downloader"
   },
 
+  "ntpsync": {
+    "version": "0.1.0",
+    "file": "ntpsync.py",
+    "install": "/lib/ntpsyc.py",
+    "desc": "Sync time with NTP"
+  },
+
   "testpkg": {
     "version": "0.1.0",
     "file": "testpkg.py",
