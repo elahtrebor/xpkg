@@ -2,6 +2,7 @@ import ubinascii
 import os
 import sys
 import gc
+import uos
 
 def mkdir_p(path):
     parts = path.split("/")
@@ -77,18 +78,18 @@ def append_to_file(fname, data):
      f.close()
 
 
-
 def main(argv):
  DHCPB64 = (
-    "aW1wb3J0IG5ldHdvcmsKIyBOT1RFIEVkaXQgdGhpcyBmaWxlIGFuZCBjaGFuZ2UgaXQgdG8gY2hhbmdlIG5ldHdvcmsgY29ubmVjdGlvbgpzc2lkID0gIlNTSURfVkFSIgp3a2V5ID0gIldLRVlfVkFSIgoKd2xhbiA9IG5ldHdvcmsuV0xBTihuZXR3b3JrLlNUQV9JRikKd2xhbi5hY3RpdmUoVHJ1ZSkKc2Nhbm5lZCA9IHdsYW4uc2NhbigpCndsYW4uY29ubmVjdChzc2l
-)
+    "aW1wb3J0IG5ldHdvcmsKIyBOT1RFIEVkaXQgdGhpcyBmaWxlIGFuZCBjaGFuZ2UgaXQgdG8gY2hhbmdlIG5ldHdvcmsgY29ubmVjdGlvbgpzc2lkID0gIlNTSURfVkFSIgp3a2V5ID0gIldLRVlfVkFSIgoKd2xhbiA9IG5ldHdvcmsuV0xBTihuZXR3b3JrLlNUQV9JRikKd2xhbi5hY3RpdmUoVHJ1ZSkKc2Nhbm5lZCA9IHdsYW4uc2NhbigpCndsYW4uY29ubmVjdChzc2lkLCB3a2V5KQoKCg==",
+ )
+
  print("This command installs persistent networking by saving your")
  print("Wifi preferences in a file called dhcp.py and then also ")
  print("adding a boot parameter in boot.py to call dhcp.py")
  installNetwork = input("Do you want to proceed with the setup of wireless networking? (y|n)")
  if installNetwork == "y":
      ssid = input("Enter the SSID>")
-     wkey = input("Enter the password")
+     wkey = input("Enter the password>")
      print ("Creating dhcp.py")
      dhtxt = decode_b64_to_text(DHCPB64)
      dhtxt = dhtxt.replace("SSID_VAR", ssid).replace("WKEY_VAR", wkey)
