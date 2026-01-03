@@ -23,6 +23,13 @@
     "desc": "Sync time with NTP"
   },
 
+  "wificonfig": {
+    "version": "0.1.0",
+    "file": "wificonfig.py",
+    "install": "/lib/wificonfig.py",
+    "desc": "Setup wifi persistence"
+  },
+
   "testpkg": {
     "version": "0.1.0",
     "file": "testpkg.py",
